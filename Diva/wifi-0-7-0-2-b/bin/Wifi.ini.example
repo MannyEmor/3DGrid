@@ -1,0 +1,47 @@
+[Startup]
+	ServiceConnectors = "Diva.Wifi.dll:WifiServerConnector"
+
+[Network]
+	port = 8002
+
+[DatabaseService]
+    StorageProvider = "OpenSim.Data.MySQL.dll"
+    ConnectionString = "Data Source=localhost;Database=opensim;User ID=opensim;Password=opensim123;"
+
+[WifiService]
+	GridName = "My World"
+	LoginURL = "http://localhost:8002"
+	WebAddress = "http://localhost:8002"
+	
+	;; The Wifi Administrator account
+	AdminFirst = "Admin"
+	AdminLast = "Admin"
+	AdminEmail = "your@email.com"
+
+	;; Do you want to be able to control grid registrations?
+	AccountConfirmationRequired = false
+
+	;; Default avatars for new account registration
+	;; Syntax: AvatarAccount_<AvatarType> = "<FirstName> <LastName>"
+	;; Appearance and attachments are copied from avatar <FirstName> <LastName>.
+	AvatarAccount_Female = "Female Avatar"
+	AvatarAccount_Male = "Male Avatar"
+	AvatarAccount_Neutral = "Neutral Avatar"
+
+	;; Preselection for default avatar in new account registration
+	AvatarPreselection = "Neutral"
+
+	;; Variables for your mail server
+	;; Users will get email notifications from this account
+	SmtpHost = "smtp.gmail.com"
+	SmtpPort = "587"
+	SmtpUsername = "your_account_in_this_mail_server"
+	SmtpPassword = "your_password_in_this_mail_server"
+
+[UserAccountService]
+
+[AuthenticationService]
+
+
+	
+	

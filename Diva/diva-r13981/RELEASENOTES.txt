@@ -1,0 +1,234 @@
+*** Release Notes ***
+
+This is diva-r13981 corresponding to OpenSim 0.7.0.2-post-fixes.
+IF YOU ARE UPGRADING FROM A RELEASE PRIOR TO r13458, PLEASE READ THE
+NOTES FOR r13458 CAREFULLY (below). If you are upgrading from r1348 onwards,
+this is a minor release from there; nothing special needs to be done.
+
+** Changes in OpenSim
+
+Minor bug fix in REST console/
+
+** Changes in Diva Wifi
+
+See RELEASENOTESWIFI.txt
+
+** Changes in diva distro tools
+
+None at this time.
+
+===================== Older release notes ====================
+
+==== r13861 ====
+
+** Changes in OpenSim
+
+See http://opensimulator.org/wiki/0.7.0.2_Release
+
+** Changes in Diva Wifi
+
+Many! See RELEASENOTESWIFI.txt for important information.
+
+** Changes in diva distro tools
+
+None at this time.
+
+==== r13458 ====
+
+PLEASE READ THESE NOTES CAREFULLY, especially if you are upgrading
+from an older release.
+
+This diva distro is based on the official 0.7 release, more
+specifically on the 0.7-post-fixes branch. 
+The exact GIT tag is shown on the name of the zip file.
+
+This is a major release, with major changes across the board.
+
+** Changes in OpenSim
+
+See http://opensimulator.org/wiki/0.7_Release
+
+** Changes in configuration variables
+
+The changes are inumerous. IF YOU GOT THIS RELEASE THROUGH AN UPDATE,
+YOU MUST RUN CONFIGURE AGAIN, so that the new configurations are put
+in place. 
+
+** Changes in Networking assumptions
+
+This new release features HG 1.5, an improved version of the Hypergrid
+architecture that includes a fair amount of security. 
+(see http://opensimulator.org/wiki/0.7_Release#Hypergrid_changes)
+
+This added security imposes a few more constraints on how to set up
+your network *properly*. THESE CHANGES AFFECT PRIMARILY HOME NETWORKS,
+whose routers often have NAT issues.
+
+Due to these changes, it is advised that people provide domain names
+instead of IP addresses in the configurations. In home networks, the
+use of an IP address as the external host name of the world may
+prevent you from either logging in or hypergriding out (this depends
+heavily on your router).
+
+For more information and useful advice, see doc/DNS.txt
+
+** New diva distro addon: Wifi
+
+This new release features an embedded Web application called
+Wifi. Wifi handles user registrations to your world.
+
+For more information, see doc/WIFI.txt
+
+** What to expect on first run
+
+If you are upgrading from an older release, your first run of this
+release will exhibit unusual behaviors. All subsequent runs will be
+normal. Here are some of the things that you should expect from the
+first run:
+
+- Startup will take more time. This is due to DB changes. The more
+  assets your world has, the longer this takes. Don't interrupt that
+  process.
+- You will be asked a few questions from OpenSim itself. See 
+  doc/OSQUESTIONS.txt
+- On first login, avatar appearances will be gone. You need to wear
+  them again.
+- Home information will be gone. You need to set your home location
+  again. 
+
+** Troubleshooting
+
+See http://opensimulator.org/wiki/0.7_Release#Troubleshooting
+
+=== r12751 ===
+
+This diva distro is based on the official 0.6.9 release. 
+The exact GIT tag is shown on the name of the zip file.
+
+This is a major release, with several bug fixes, and the last before 0.7.
+
+There are no changes in the distribution tools, or in the configurations; 
+only bug fixes in OpenSim.
+
+** Bug fixes in OpenSim since previous version of this distro:
+
+* Teleport offers implemented
+* SQLite database adapter updated to work with Mono 2.6 and later (as well as Windows).  Unfortunately, this will currently not work with Mac and Mono 2.6 due to missing symbols in the SQLite library bundled with Mac OS X.  Mono 2.4 can still be used by switching to the legacy adaptor.
+* "Allowed Users" and "Allowed Groups" estate functionality added.
+* Added implementations of llCollisionFilter, llPassCollision, llLoopSoundSlave, llLookSoundMaster, llTriggerSoundLimited, llPointAt, llStopPointAt, llGetCenterOfMass, llGroundRepel, llSetVehicleFlags, llRemoveVehicleFlags, llSetInventoryPermMask.
+* Improvements to LSL functions including llDialog, llGetPrimitiveParams. llSetPrimitiveParams, llGetStatus, llSetStatus, llSetDamage, llDie, llLookAt, llParcelMediaCommandList.
+* Scripts now receive a stream of touch events if the mouse button is held down on their containing prim.
+* Terrain collision implemented.
+* OpenSim.Tools.Configger.exe added to dump configuration as an .ini, .xml or .sql file.
+* Avatar eyes and hair no longer remain white in standalone mode.
+* Improvements to undo, redo, land undo.
+* Improvements to attachments rezzing.
+* Support for HTTP texture fetching.
+* Fix console problem on startup of Grid.UserServer.exe with no existing config.
+* Stop existing avatars appearing in the T-pose to those who have just logged in.
+* Improvements to ground standing.
+* Clothing in the inventory library should now have the correct icons
+* Gestures saved to OARs/IARs
+* OARs now save region settings
+* Fixes for terrain editing problems in megaregions
+* Ground sitting fixed
+* Viewers now receive UUID of the broadcasting prim when chat originates from a script.
+* Attempting to rez no-copy objects on no-rez parcels no longer cause the item to vanish from inventory.
+* Prim to prim collisions improved.
+* Resizing the console window in Mono no longer results in an exception flood.
+* Various performance improvements
+* Various stability improvements
+
+
+==== r12274 ====
+
+** Bug fixes in OpenSim since previous version of this distro:
+
+- Fixes Undo
+- Fixes T-pose of others on login
+- Feet stand on the ground instead of in the ground
+- Almost all of LSL implemented
+- Fixes prim to prim collision
+
+==== r11766 ====
+
+** Additions 
+
+- There is a new addon module, LibraryModule, that allows sim 
+  operators to add arbitrary new content in the OpenSim Library,
+  so that it can be used by all users of the local world.
+  The library content should be placed as .iar files under bin/Library.
+  When the .iar file name partially matches the name of one of the
+  existing library subfolders, the content is placed under those;
+  top otherwise.
+
+- There are two small .iar files included in the distribution,
+  one with outfits and the other with a few objects. Operators can
+  add more .iar files to bin/Library; they all add up.
+
+** Changes in configuration preferences
+
+- LibraryModule = true, to enable the library module. 
+
+** Bug fixes in distribution
+
+- the previous release didn't have the image module by mistake
+
+** Bug fixes in OpenSim since previous version of this distro:
+
+- map image is correctly set after hyperlinking
+- multi-HG-TPs preserve the home information
+
+==== r11651 ====
+
+** Changes in configuration preferences
+
+- AllowOSFunctions = true, with Moderate threat level. This will 
+  enable the basic OS functions. This is a Diva preference, and,
+  as with all preferences, can be overriden in MyWorld.ini
+
+** Bug fixes in OpenSim since previous version of this distro:
+
+- landing on prims works again
+- several performance improvements and increased stability
+- load oar now has a merge facility
+  (see http://opensimulator.org/wiki/OpenSim_Archives)
+
+==== r11491 ====
+
+*** Release Notes ***
+
+This diva distro is based on OpenSim 0.6.8-dev. The exact GIT tag
+is shown on the name of the zip file.
+
+** Changes in license
+
+- Please read the license. It contains important information about Metaverse Ink services that are used by this distribution.
+
+** Changes in distribution tools:
+
+- none at this time
+
+
+** Bug fixes in OpenSim since previous release:
+
+- Editing attachments should work better, and HUDs should stay in place.
+
+
+** Quirks:
+
+- If you find that you don't land with PageDown, you'll have to hit
+  the Home Key on your keyboard, or press Stop Flying.
+
+
+** New-ish features in OpenSim:
+
+- Additional console command to try to fix phantom objects after  
+  importing from DB or OAR into the megaregion. Use
+  # fix-phantoms
+
+- It is now possible to stich together standalones in different 
+  machines to form larger spaces. 
+  For instructions on how to do that with this distro, see blog 
+  post at http://www.metaverseink.com/blog/?p=22
+
